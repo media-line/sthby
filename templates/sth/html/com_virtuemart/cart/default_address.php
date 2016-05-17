@@ -22,7 +22,7 @@
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 ?>
-<div class="billto-shipto">
+<div class="billto-shipto hidden">
 	<div class="width50 floatleft">
 
 		<span><span class="vmicon vm2-billto-icon"></span>
