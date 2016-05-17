@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" client="site" method="upgrade">
+	<name>Яндекс карта</name>
+	<author>Lange D.M.</author>
+	<creationDate>April 2016</creationDate>
+	<copyright>Copyright (C) www.medialine.by</copyright>
+	<license>GNU General Public License version 2 or later;</license>
+	<authorEmail>dlange@medialine.by</authorEmail>
+	<authorUrl>www.medialine.by</authorUrl>
+	<version>1.0.0</version>
+	<description>Модуль выводит яндекс карту и текстовый блок</description>
+
+	<files>
+		<filename module="mod_dm_yandexmap">mod_dm_yandexmap.php</filename>
+		<folder>tmpl</folder>
+	</files>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="map_title"
+					type="text"
+					label="Заголовок карты"
+					description="Заголовок карты"/>
+				<field
+					name="latitude"
+					type="text"
+					label="Широта центра"
+					description="Широта центра"/>
+				<field
+					name="longitude"
+					type="text"
+					label="Долгота центра"
+					description="Долгота центра"/>
+				<field
+					name="zoom"
+					type="text"
+					label="Приближение"
+					description="Укажите приближение карты числом, например 12"
+					default="12"/>
+				<field name="marker_image"
+					label="Изображение маркера"
+					type="media" />
+				<field name="marker_width"
+					label="Ширина маркера  в px"
+					type="text" />
+				<field name="marker_height"
+					label="Высота маркера в px"
+					type="text" />
+				<field name="marker_offset_x"
+					label="Отступ маркера по x"
+					type="text" />
+				<field name="marker_offset_y"
+					label="Отступ маркера по y"
+					type="text" />
+				<field name="marker_link_text"
+					label="Текст ссылки маркера"
+					type="text" 
+					description="По умолчанию - Подробнее"
+					default="Подробнее"/>
+				<field name="map_width"
+					label="Длинна карты"
+					type="text" 
+					default="100%" />
+				<field name="map_height"
+					label="Высота карты"
+					type="text"/>
+			</fieldset>
+			<fieldset name="cities" label="Список по городам">
+				<field name="city_block_title"
+					label="Заголовок блока"
+					type="text" 
+					description="Заголовок блока"
+				/>
+				<field name="show_on_map"
+					label="Текст 'Показать на карте'"
+					type="text" 
+					description="Текст ссылки для отображения адреса на карте"
+				/>
+				<field name="city1"
+					label="Регион"
+					type="text" 
+					description="Название региона"
+				/>
+				<field name="city_list1"
+					type="Repeatable"
+					icon="list"
+					description="Список контактов"
+					label="Список контактов"
+					default=""
+					select="Добавить">
+					<fieldset name="city_kontacts1" repeat="true">
+						<field name="city_text1"
+							label="Адрес / Текст маркера"
+							type="textarea" 
+							filter="safehtml"/>
+						<field name="city_latitude1"
+							label="Широта"
+							type="text" />
+						<field name="city_longitude1"
+							label="Долгота"
+							type="text" />
+					</fieldset>
+				</field>
+				<field name="city2"
+					label="Регион"
+					type="text" 
+					description="Название региона"
+				/>
+				<field name="city_list2"
+					type="Repeatable"
+					icon="list"
+					description="Список контактов"
+					label="Список контактов"
+					default=""
+					select="Добавить">
+					<fieldset name="city_kontacts2" repeat="true">
+						<field name="city_text2"
+							label="Адрес / Текст маркера"
+							type="textarea" 
+							filter="safehtml"/>
+						<field name="city_latitude2"
+							label="Широта"
+							type="text" />
+						<field name="city_longitude2"
+							label="Долгота"
+							type="text" />
+					</fieldset>
+				</field>
+				<field name="city3"
+					label="Регион"
+					type="text" 
+					description="Название региона"
+				/>
+				<field name="city_list3"
+					type="Repeatable"
+					icon="list"
+					description="Список контактов"
+					label="Список контактов"
+					default=""
+					select="Добавить">
+					<fieldset name="city_kontacts3" repeat="true">
+						<field name="city_text3"
+							label="Адрес / Текст маркера"
+							type="textarea" 
+							filter="safehtml"/>
+						<field name="city_latitude3"
+							label="Широта"
+							type="text" />
+						<field name="city_longitude3"
+							label="Долгота"
+							type="text" />
+					</fieldset>
+				</field>
+				<field name="city4"
+					label="Регион"
+					type="text" 
+					description="Название региона"
+				/>
+				<field name="city_list4"
+					type="Repeatable"
+					icon="list"
+					description="Список контактов"
+					label="Список контактов"
+					default=""
+					select="Добавить">
+					<fieldset name="city_kontacts4" repeat="true">
+						<field name="city_text4"
+							label="Адрес / Текст маркера"
+							type="textarea" 
+							filter="safehtml"/>
+						<field name="city_latitude4"
+							label="Широта"
+							type="text" />
+						<field name="city_longitude4"
+							label="Долгота"
+							type="text" />
+					</fieldset>
+				</field>
+				<field name="city5"
+					label="Регион"
+					type="text" 
+					description="Название региона"
+				/>
+				<field name="city_list5"
+					type="Repeatable"
+					icon="list"
+					description="Список контактов"
+					label="Список контактов"
+					default=""
+					select="Добавить">
+					<fieldset name="city_kontacts5" repeat="true">
+						<field name="city_text5"
+							label="Адрес / Текст маркера"
+							type="textarea" 
+							filter="safehtml"/>
+						<field name="city_latitude5"
+							label="Широта"
+							type="text" />
+						<field name="city_longitude5"
+							label="Долгота"
+							type="text" />
+					</fieldset>
+				</field>
+				<field name="city6"
+					label="Регион"
+					type="text" 
+					description="Название региона"
+				/>
+				<field name="city_list6"
+					type="Repeatable"
+					icon="list"
+					description="Список контактов"
+					label="Список контактов"
+					default=""
+					select="Добавить">
+					<fieldset name="city_kontacts6" repeat="true">
+						<field name="city_text6"
+							label="Адрес / Текст маркера"
+							type="textarea" 
+							filter="safehtml"/>
+						<field name="city_latitude6"
+							label="Широта"
+							type="text" />
+						<field name="city_longitude6"
+							label="Долгота"
+							type="text" />
+					</fieldset>
+				</field>
+				<field name="city7"
+					label="Регион"
+					type="text" 
+					description="Название региона"
+				/>
+				<field name="city_list7"
+					type="Repeatable"
+					icon="list"
+					description="Список контактов"
+					label="Список контактов"
+					default=""
+					select="Добавить">
+					<fieldset name="city_kontacts7" repeat="true">
+						<field name="city_text7"
+							label="Адрес / Текст маркера"
+							type="textarea" 
+							filter="safehtml"/>
+						<field name="city_latitude7"
+							label="Широта"
+							type="text" />
+						<field name="city_longitude7"
+							label="Долгота"
+							type="text" />
+					</fieldset>
+				</field>
+				<field name="city8"
+					label="Регион"
+					type="text" 
+					description="Название региона"
+				/>
+				<field name="city_list8"
+					type="Repeatable"
+					icon="list"
+					description="Список контактов"
+					label="Список контактов"
+					default=""
+					select="Добавить">
+					<fieldset name="city_kontacts8" repeat="true">
+						<field name="city_text8"
+							label="Адрес / Текст маркера"
+							type="textarea" 
+							filter="safehtml"/>
+						<field name="city_latitude8"
+							label="Широта"
+							type="text" />
+						<field name="city_longitude8"
+							label="Долгота"
+							type="text" />
+					</fieldset>
+				</field>
+			</fieldset>	
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
+				<field
+					name="moduleclass_sfx"
+					type="textarea" rows="3"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static">
+					<option
+						value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
