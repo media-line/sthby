@@ -14,3 +14,5 @@ $warp = require(__DIR__.'/warp.php');
 
 // load main theme file, located in /layouts/theme.php
 echo $warp['template']->render('theme');
+
+/*тест*/
