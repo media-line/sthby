@@ -109,14 +109,14 @@ foreach ($this->cart->products as $pkey => $prow) {
 } else {
 	$colspan = 2;
 } ?>
-<tr>
+<tr class="hidden">
 	<td colspan="4">&nbsp;</td>
 
 	<td colspan="<?php echo $colspan ?>">
 		<hr/>
 	</td>
 </tr>
-<tr class="sectiontableentry1">
+<tr class="sectiontableentry1 hidden">
 	<td colspan="4" align="right"><?php echo vmText::_ ('COM_VIRTUEMART_ORDER_PRINT_PRODUCT_PRICES_TOTAL'); ?></td>
 
 	<?php if (VmConfig::get ('show_tax')) { ?>
@@ -225,7 +225,8 @@ if ( 	VmConfig::get('oncheckout_opc',true) or
 	(!VmConfig::get('oncheckout_opc',true) and VmConfig::get('oncheckout_show_steps',false) and
 		!empty($this->cart->virtuemart_shipmentmethod_id) )
 ) { ?>
-<tr class="sectiontableentry1" style="vertical-align:top;">
+		<!-- Ячейки с выбором метода доставки -->
+<tr class="sectiontableentry1 hidden" style="vertical-align:top;">
 	<?php if (!$this->cart->automaticSelectedShipment) { ?>
 		<td colspan="4" style="align:left;vertical-align:top;">
 			<?php
@@ -269,7 +270,7 @@ if ( 	VmConfig::get('oncheckout_opc',true) or
 		( (!VmConfig::get('oncheckout_opc',true) and VmConfig::get('oncheckout_show_steps',false) ) and !empty($this->cart->virtuemart_paymentmethod_id))
 	)
 ) { ?>
-<tr class="sectiontableentry1" style="vertical-align:top;">
+<tr class="sectiontableentry1 hidden" style="vertical-align:top;">
 	<?php if (!$this->cart->automaticSelectedPayment) { ?>
 		<td colspan="4" style="align:left;vertical-align:top;">
 			<?php
@@ -300,7 +301,7 @@ if ( 	VmConfig::get('oncheckout_opc',true) or
 	<td align="right" ><?php  echo $this->currencyDisplay->createPriceDiv ('salesPricePayment', '', $this->cart->cartPrices['salesPricePayment'], FALSE); ?> </td>
 </tr>
 <?php  } ?>
-<tr>
+<tr class="hidden">
 	<td colspan="4">&nbsp;</td>
 	<td colspan="<?php echo $colspan ?>">
 		<hr/>

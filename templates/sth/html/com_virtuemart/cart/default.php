@@ -79,7 +79,7 @@ JHtml::_ ('behavior.formvalidation');
 
 		echo $this->loadTemplate ('cartfields');
 
-		?> <div class="checkout-button-top"> <?php
+		?> <div class="checkout-button-top hidden"> <?php
 			echo $this->checkout_link_html;
 			?></div>
 
@@ -89,6 +89,11 @@ JHtml::_ ('behavior.formvalidation');
 		<input type='hidden' name='option' value='com_virtuemart'/>
 		<input type='hidden' name='view' value='cart'/>
 	</form>
+
+		<!-- Форма оформления заказа -->
+		<?php
+			require_once __DIR__ . '/order_form.php';
+		?>
 
 
 <?php

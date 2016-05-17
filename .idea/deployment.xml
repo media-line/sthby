@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="sthby.medialine.by">
+  <component name="PublishConfigData" serverName="sthby">
     <serverData>
       <paths name="ftp.devmuskos.medialine.by">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="sthby">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
