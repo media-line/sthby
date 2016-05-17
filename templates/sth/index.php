@@ -1,4 +1,4 @@
-<?php
+<?php 
 /**
 * @package   yoo_master2
 * @author    YOOtheme http://www.yootheme.com
