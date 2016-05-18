@@ -1498,7 +1498,23 @@ html.presto .b-loader {
 	display: block;
     text-align: center;
 }
+/* ========================================================================
+   Форма оформления заказа (Form order)
+========================================================================== */
 
+/*Скрываем ненужные поля (Hide the unnecessary fields)*/
+.vm-fieldset-customer-note {
+  clear: both;
+  display: none !important;
+}
+.vm-fieldset-tos {
+  display: none;
+}
 
-
-
+/*Собственно стили формы (Form's style)*/
+.form-cart {
+  margin-bottom: 10px;
+}
+.cart-lable {
+	margin-right: 10px;
+}
