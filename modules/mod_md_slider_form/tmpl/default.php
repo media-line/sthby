@@ -3,13 +3,15 @@
 defined('_JEXEC') or die;
 //$doc = JFactory::getDocument();
 //$doc->addScript('/templates/sth/warp/vendor/uikit/js/components/slider.js');
+$answer1Arr = json_decode($params->get('answer1'))->var_answer;
+$answer2Arr = json_decode($params->get('answer2'))->var_answer;
 ?>
 
 <div class="uk-md-sliderform uk-md-sliderform-<?php echo $moduleclass_sfx ?>" >
 	<?php  ?>
 	<div class="uk-slidenav-position" data-uk-slideshow="{animation: 'scroll'}">
 		<ul class="uk-slideshow">
-			<li>
+			<!--<li>
 				<div class="uk-slide uk-position-relative" style="background-image: url(<?php echo $params->get('slide1-background'); ?>);">
 					<div class="uk-slide-title-wrapper uk-position-absolute">
 						<div class="uk-slide-title uk-text-contrast uk-text-bold uk-text-center uk-position-absolute"><?php echo $params->get('slide1-text'); ?></div>
@@ -32,220 +34,185 @@ defined('_JEXEC') or die;
 						<div class="uk-slide-title-wrapper">
 							<div class="uk-slide-title uk-text-bold uk-text-center"><?php echo $params->get('slide2-question'); ?></div>
 						</div>
-						<div class="">
-							<div>
-								<a href="#" class="uk-floors-less-3" data-uk-slideshow-item="next">
-									<?php echo $params->get('slide2-answer1'); ?>
-								</a>
+						<div class="uk-slide-chose"><div class="uk-slide-chose-text"><?php echo JText::_('MOD_MD_SLIDER_FORM_CHOSE'); ?></div></div>
+						<div class="clearfix uk-slide-answer-blocks">
+							<div class="uk-slide-answer-block" style="background-color: #ccc; background-image: url(<?php echo $params->get('slide2-answer1-back'); ?>);">
+								<div class="uk-slide-shadow-overlay"></div>
+								<div class="uk-floors-more-3" data-uk-slideshow-item="next">
+									<div class="uk-slide-answer-text"><?php echo $params->get('slide2-answer1'); ?></div>
+									<a href="#" data-uk-slideshow-item="next"><?php echo JText::_('MOD_MD_SLIDER_FORM_NEXT'); ?></a>
+								</div>								
 							</div>
-							<div>
-								<a href="#" class="uk-floors-more-3" data-uk-slideshow-item="next">
-									<?php echo $params->get('slide2-answer2'); ?>
-								</a>
+							<div class="uk-slide-answer-block" style="background-color: #ccc; background-image: url(<?php echo $params->get('slide2-answer2-back'); ?>);">
+								<div class="uk-slide-shadow-overlay"></div>
+								<div class="uk-floors-more-3" data-uk-slideshow-item="next">
+									<div class="uk-slide-answer-text"><?php echo $params->get('slide2-answer2'); ?></div>
+									<a href="#" data-uk-slideshow-item="next"><?php echo JText::_('MOD_MD_SLIDER_FORM_NEXT'); ?></a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</li>	
+			</li>
 			<li  class="uk-calc-slide-3">
 				<div class="uk-slide uk-position-relative" style="background-color: #ccc; background-image: url(<?php echo $params->get('slide3-background'); ?>);">
-					<div class="uk-slide-title-wrapper">
-						<div class="uk-slide-title uk-text-bold uk-text-center"><?php echo $params->get('slide3-question'); ?></div>
-					</div>
-					<div class="">
-						<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
-							<?php echo $params->get('slide3-answer1'); ?>
-							<input id="wall-factor" type="hidden" value="1" />
-						</a><br>
-						<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
-							<?php echo $params->get('slide3-answer2'); ?>
-							<input id="wall-factor" type="hidden" value="1.1" />
-						</a><br>
-						<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
-							<?php echo $params->get('slide3-answer3'); ?>
-							<input id="wall-factor" type="hidden" value="0.8" />
-						</a><br>
-						<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
-							<?php echo $params->get('slide3-answer4'); ?>
-							<input id="wall-factor" type="hidden" value="1" />
-						</a>
+					<div class="uk-slide-wrap" style="background-image: url(<?php echo $params->get('slide3-background-wrap'); ?>);">
+						<div class="uk-slide-wrap-shadow">
+							<a href="#" class="uk-slide-back" data-uk-slideshow-item="previous"><?php echo JText::_('MOD_MD_SLIDER_FORM_BACK'); ?></a>
+							<div class="uk-slide-title-wrapper">
+								<div class="uk-slide-title uk-text-bold uk-text-center"><?php echo $params->get('slide3-question'); ?></div>
+							</div>
+							<div class="uk-slide-answers clearfix">
+								<div class="uk-slide-answer">
+									<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
+										<?php echo $params->get('slide3-answer1'); ?>
+										<input id="wall-factor" type="hidden" value="1" />
+									</a>
+								</div>
+								<div class="uk-slide-answer">
+									<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
+										<?php echo $params->get('slide3-answer2'); ?>
+										<input id="wall-factor" type="hidden" value="1.1" />
+									</a>
+								</div>
+								<div class="uk-slide-answer">
+									<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
+										<?php echo $params->get('slide3-answer3'); ?>
+										<input id="wall-factor" type="hidden" value="0.8" />
+									</a>
+								</div>
+								<div class="uk-slide-answer">
+									<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
+										<?php echo $params->get('slide3-answer4'); ?>
+										<input id="wall-factor" type="hidden" value="1" />
+									</a>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</li>
-			<li class="uk-calc-slide-4">	
+			<li  class="uk-calc-slide-4">
 				<div class="uk-slide uk-position-relative" style="background-color: #ccc; background-image: url(<?php echo $params->get('slide4-background'); ?>);">
-					<div class="uk-slide-title-wrapper">
-						<div class="uk-slide-title uk-text-bold uk-text-center"><?php echo $params->get('slide3-question'); ?></div>
-					</div>
-					 
-					<div class="uk-width-2-3 uk-container-center uk-margin-large-top">
-						<div id="windowsill_height"></div>
-						<div class="uk-windowsill-height-scale">
-							<span>100</span>
-							<span>200</span>
-							<span>300</span>
-							<span>400</span>
-							<span>500</span>
-							<span>600</span>
-							<span>700</span>
-							<span>800</span>
-							<span>900</span>
-							<span>1000</span>
-							<span>1100</span>
-							<span>1200</span>
-							<span>1300</span>
+					<div class="uk-slide-wrap" style="background-image: url(<?php echo $params->get('slide4-background-wrap'); ?>);">
+						<div class="uk-slide-wrap-shadow">
+							<a href="#" class="uk-slide-back" data-uk-slideshow-item="previous"><?php echo JText::_('MOD_MD_SLIDER_FORM_BACK'); ?></a>
+							<div class="uk-slide-title-wrapper">
+								<div class="uk-slide-title uk-text-bold uk-text-center"><?php echo $params->get('slide4-question'); ?></div>
+							</div>
+							<div class="uk-container-center clearfix">
+								<div class="uk-slide-block">
+									<div class="uk-slide-block-title"><?php echo $params->get('slide4-answer1'); ?></div>
+									<div class="uk-slide-room-area">
+										<div class="room-area-result"><input maxlength="2" id="room-area-active" type="text" value="<?php echo $params->get('slide4-answer1-min'); ?>"> <span class="uk-inline-block"><?php echo $params->get('slide4-answer1-unit'); ?></span></div>
+										<div id="room-area"></div>		
+									</div>									
+								</div>
+								<div class="uk-slide-block">
+									<div class="uk-slide-block-title"><?php echo $params->get('slide4-answer2'); ?></div>
+									<div class="uk-slide-room-area">
+										<div class="room-area-result"><input maxlength="2" id="roof-height-active" type="text" value="<?php echo $params->get('slide4-answer2-min'); ?>"> <span class="uk-inline-block"><?php echo $params->get('slide4-answer2-unit'); ?></span></div>
+										<div id="roof-height"></div>	
+									</div>
+								</div>
+							</div>
+							<script>
+								jQuery("#room-area").slider({
+									min: <?php echo $params->get('slide4-answer1-min'); ?>,
+									max: <?php echo $params->get('slide4-answer1-max'); ?>,
+									step: <?php echo $params->get('slide4-answer1-step'); ?>,
+									slide: function( event, ui ) {
+										jQuery("#room-area-active").val(ui['value']);
+									}
+								});
+								jQuery("#room-area-active").keyup(function() {
+									jQuery("#room-area").slider("value", [jQuery("#room-area-active").val()]);
+								});
+								jQuery("#roof-height").slider({
+									min: <?php echo $params->get('slide4-answer2-min'); ?>,
+									max: <?php echo $params->get('slide4-answer2-max'); ?>,
+									step: <?php echo $params->get('slide4-answer2-step'); ?>,
+									slide: function( event, ui ) {
+										jQuery("#roof-height-active").val(ui['value']);
+									}
+								});
+								jQuery("#roof-height-active").keyup(function() {
+									jQuery("#roof-height").slider("value", [jQuery("#room-area-active").val()]);
+								});
+							</script>
+							<div class="uk-slide-answer">
+								<a href="#" data-uk-slideshow-item="next"><?php echo JText::_('MOD_MD_SLIDER_FORM_NEXT'); ?></a>
+							</div>
 						</div>
-					</div>
-					<div class="uk-float-right uk-text-bold uk-h2">
-						<div id="windowsill_height_result" class="uk-inline-block">
-						100
-						</div>
-						<div class="uk-inline-block">мм</div>
-					</div>
-					<script>
-						jQuery("#windowsill_height").slider({
-							min: 100,
-							max: 1300,
-							//range: true,
-							step: 100,
-							change: function( event, ui ) {
-								var windowsillHeight = jQuery(this).slider( "value" );
-								jQuery('#windowsill_height_result').html(windowsillHeight);
-								//jQuery("#windowsill-height").val(windowsillHeight);
-								if (windowsillHeight < 700){
-									jQuery("#radiator-types").val('S350');
-								} else {
-									jQuery("#radiator-types").val('S80');
-								}
-							}
-						});
-						//alert();
-					</script>
-					<br>
-					<br>
-					<br>
-					<br>
-					<div class="">
-						<a href="#" class="uk-slide-button uk-text-contrast uk-homeslide-button" data-uk-slideshow-item="next">
-							Далее
-						</a>
 					</div>
 				</div>
 			</li>
-			<li>
+			<li class="uk-calc-slide-5">	
 				<div class="uk-slide uk-position-relative" style="background-color: #ccc; background-image: url(<?php echo $params->get('slide5-background'); ?>);">
-					<div class="uk-slide-title-wrapper">
-						<div class="uk-slide-title uk-text-bold uk-text-center"> Выясняем высоту потолка</div>
-					</div>
-					<div class="uk-width-2-3 uk-container-center uk-margin-large-top">
-						<div id="ceiling-height"></div>
-						<div class="uk-ceiling-height-scale">
-							<span>2</span>
-							<span>2.5</span>
-							<span>3</span>
-							<span>3.5</span>
-							<span>4</span>
+					<div class="uk-slide-wrap" style="background-image: url(<?php echo $params->get('slide5-background-wrap'); ?>);">
+						<div class="uk-slide-wrap-shadow">
+							<a href="#" class="uk-slide-back" data-uk-slideshow-item="previous"><?php echo JText::_('MOD_MD_SLIDER_FORM_BACK'); ?></a>
+							<div class="uk-slide-title-wrapper">
+								<div class="uk-slide-title uk-text-bold uk-text-center"><?php echo $params->get('slide5-question'); ?></div>
+							</div>
+							<div class="uk-slide-answers clearfix">
+								<div class="uk-slide-answer">
+									<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
+										<?php echo $params->get('slide5-answer1'); ?>
+										<input id="wall-factor" type="hidden" value="1" />
+									</a>
+								</div>
+								<div class="uk-slide-answer">
+									<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
+										<?php echo $params->get('slide5-answer2'); ?>
+										<input id="wall-factor" type="hidden" value="1.1" />
+									</a>
+								</div>
+							</div>
 						</div>
-					</div>
-					<div class="uk-float-right uk-text-bold uk-h2">
-						<div id="ceiling-height-result" class="uk-inline-block">
-						2
-						</div>
-						<div class="uk-inline-block">м</div>
-					</div>
-					<script>
-						jQuery("#ceiling-height").slider({
-							min: 2,
-							max: 4,
-							//range: true,
-							step: 0.5,
-							change: function( event, ui ) {
-								var ceilingHeight = jQuery(this).slider( "value" );
-								jQuery('#ceiling-height-result').html(ceilingHeight);
-								jQuery('#ceiling_height').val(ceilingHeight);
-							}
-						});
-						//alert();
-					</script>
-					<br>
-					<br>
-					<br>
-					<div class="">
-						<a href="#" class="uk-slide-button uk-text-contrast uk-homeslide-button" data-uk-slideshow-item="next">
-							Далее
-						</a>
 					</div>
 				</div>
-			</li>
-			<li>
+			</li>-->
+			<li class="uk-calc-slide-6">
 				<div class="uk-slide uk-position-relative" style="background-color: #ccc; background-image: url(<?php echo $params->get('slide6-background'); ?>);">
-					<div class="uk-slide-title-wrapper">
-						<div class="uk-slide-title uk-text-bold uk-text-center"> Выясняем площадь комнаты</div>
-					</div>
-					<div class="uk-width-2-3 uk-container-center uk-margin-large-top">
-						<div id="room-area"></div>
-						<div class="uk-room-area-scale">
-							<span>7</span>
-							<span>10</span>
-							<span>12</span>
-							<span>15</span>
-							<span>20</span>
-							<span>25</span>
-							<span>30</span>
-							<span>35</span>
-							<span>40</span>
+					<div class="uk-slide-wrap" style="background-image: url(<?php echo $params->get('slide6-background-wrap'); ?>);">
+						<div class="uk-slide-wrap-shadow">
+							<a href="#" class="uk-slide-back" data-uk-slideshow-item="previous"><?php echo JText::_('MOD_MD_SLIDER_FORM_BACK'); ?></a>
+							<div class="uk-slide-title-wrapper">
+								<div class="uk-slide-title uk-text-bold uk-text-center"><?php echo $params->get('slide6-question'); ?></div>
+							</div>
+							<div class="uk-container-center clearfix">
+								<div class="uk-slide-block">
+									<div class="uk-slide-block-title"><?php echo $params->get('slide6-answer1'); ?></div>
+									<div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}" aria-haspopup="true" aria-expanded="false">
+										<button class="uk-dropdown-button"><?php echo $answer1Arr[0]; ?></button>
+										<div class="uk-dropdown uk-dropdown-bottom" style="top: 30px; left: 0px;">
+											<ul class="uk-nav uk-nav-dropdown">
+												<?php foreach ($answer1Arr as $answer) { ?>
+													<li><?php echo $answer; ?></li>
+												<?php } ?>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="uk-slide-block">
+									<div class="uk-slide-block-title"><?php echo $params->get('slide6-answer2'); ?></div>
+									<div class="uk-button-dropdown" data-uk-dropdown="{mode:'click'}" aria-haspopup="true" aria-expanded="false">
+										<button class="uk-dropdown-button"><?php echo $answer2Arr[1]; ?></button>
+										<div class="uk-dropdown uk-dropdown-bottom" style="top: 30px; left: 0px;">
+											<ul class="uk-nav uk-nav-dropdown">
+												<?php foreach ($answer2Arr as $answer) { ?>
+													<li><?php echo $answer; ?></li>
+												<?php } ?>
+											</ul>
+										</div>
+									 </div>
+								</div>
+								<div class="uk-slide-answer">
+									<a href="#" data-uk-slideshow-item="next"><?php echo JText::_('MOD_MD_SLIDER_FORM_NEXT'); ?></a>
+								</div>
+							 </div>
 						</div>
-					</div>
-					<div class="uk-float-right uk-text-bold uk-h2">
-						<div id="room-area-result" class="uk-inline-block">
-						7
-						</div>
-						<div class="uk-inline-block">м<sup>2</sup></div>
-					</div>
-					<script>
-						jQuery("#room-area").slider({
-							min: 7,
-							max: 40,
-							step: 5,
-							change: function( event, ui ) {
-								var roomArea = jQuery(this).slider( "value" );
-								jQuery('#room-area-result').html(roomArea);
-								jQuery('#room_area').val(roomArea);
-							}
-						});
-					</script>
-					<br>
-					<br>
-					<br>
-					<div class="">
-						<a href="#" class="uk-slide-button uk-text-contrast uk-homeslide-button" data-uk-slideshow-item="next">
-							Далее
-						</a>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="uk-slide uk-position-relative" style="background-color: #ccc; background-image: url(<?php echo $params->get('slide7-background'); ?>);">
-					<div class="uk-slide-title-wrapper">
-						<div class="uk-slide-title uk-text-bold uk-text-center">Выясняем тип комнаты.</div>
-					</div>
-					<div class="">
-						<a href="#" class="uk-room-type" data-uk-slideshow-item="next">
-							угловая комната
-							<input id="room-factor" type="hidden" value="1.3" />
-						</a><br>
-						<a href="#" class="uk-room-type" data-uk-slideshow-item="next">
-							два окна
-							<input id="room-factor" type="hidden" value="1.1" />
-						</a><br>
-						<a href="#" class="uk-room-type" data-uk-slideshow-item="next">
-							более двух окон
-							<input id="room-factor" type="hidden" value="1.2" />
-						</a><br>
-						<a href="#" class="uk-room-type" data-uk-slideshow-item="next">
-							не угловая и 1 окно
-							<input id="room-factor" type="hidden" value="1" />
-						</a>
 					</div>
 				</div>
 			</li>
