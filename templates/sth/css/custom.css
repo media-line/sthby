@@ -1505,27 +1505,6 @@ html.presto .b-loader {
     text-align: center;
 }
 /* ========================================================================
-   Форма оформления заказа (Form order)
-========================================================================== */
-
-/*Скрываем ненужные поля (Hide the unnecessary fields)*/
-.vm-fieldset-customer-note {
-  clear: both;
-  display: none !important;
-}
-.vm-fieldset-tos {
-  display: none;
-}
-
-/*Собственно стили формы (Form's style)*/
-.form-cart {
-  margin-bottom: 10px;
-}
-.cart-lable {
-	margin-right: 10px;
-}
-
-=======
    Стили калькулятора (Calculator styles)
 ========================================================================== */
 .uk-slide p {
@@ -1560,5 +1539,3 @@ html.presto .b-loader {
 .uk-slide-title-wrapper {
 	padding-top: 30px;
 }
-
-test

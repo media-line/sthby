@@ -10,7 +10,7 @@ defined('_JEXEC') or die;
 	<div class="uk-slidenav-position" data-uk-slideshow="{animation: 'scroll'}">
 		<ul class="uk-slideshow">
 			<li>
-				<div class="uk-slide uk-position-relative" style="background-image: url(/images/slider/slide001.jpg);">
+				<div class="uk-slide uk-position-relative" style="background-image: url(<?php echo $params->get('slide1-background'); ?>);">
 					<div class="uk-slide-title-wrapper uk-position-absolute">
 						<div class="uk-slide-title uk-text-contrast uk-text-bold uk-text-center uk-position-absolute"><?php echo $params->get('slide1-text'); ?></div>
 					</div>
@@ -26,7 +26,7 @@ defined('_JEXEC') or die;
 				</div>
 			</li>
 			<li class="uk-calc-slide-2">
-				<div class="uk-slide uk-position-relative" style="background-color: #ccc;">
+				<div class="uk-slide uk-position-relative" style="background-color: #ccc; background-image: url(<?php echo $params->get('slide2-background'); ?>);">
 					<div class="uk-slide-wrap">
 						<a href="#" class="uk-slide-back" data-uk-slideshow-item="previous"><?php echo JText::_('MOD_MD_SLIDER_FORM_BACK'); ?></a>
 						<div class="uk-slide-title-wrapper">
@@ -48,7 +48,7 @@ defined('_JEXEC') or die;
 				</div>
 			</li>	
 			<li  class="uk-calc-slide-3">
-				<div class="uk-slide uk-position-relative" style="background-color: #ccc;">
+				<div class="uk-slide uk-position-relative" style="background-color: #ccc; background-image: url(<?php echo $params->get('slide3-background'); ?>);">
 					<div class="uk-slide-title-wrapper">
 						<div class="uk-slide-title uk-text-bold uk-text-center"><?php echo $params->get('slide3-question'); ?></div>
 					</div>
@@ -73,7 +73,7 @@ defined('_JEXEC') or die;
 				</div>
 			</li>
 			<li class="uk-calc-slide-4">	
-				<div class="uk-slide uk-position-relative" style="background-color: #ccc;">
+				<div class="uk-slide uk-position-relative" style="background-color: #ccc; background-image: url(<?php echo $params->get('slide4-background'); ?>);">
 					<div class="uk-slide-title-wrapper">
 						<div class="uk-slide-title uk-text-bold uk-text-center"><?php echo $params->get('slide3-question'); ?></div>
 					</div>
@@ -133,7 +133,7 @@ defined('_JEXEC') or die;
 				</div>
 			</li>
 			<li>
-				<div class="uk-slide uk-position-relative" style="background-color: #ccc;">
+				<div class="uk-slide uk-position-relative" style="background-color: #ccc; background-image: url(<?php echo $params->get('slide5-background'); ?>);">
 					<div class="uk-slide-title-wrapper">
 						<div class="uk-slide-title uk-text-bold uk-text-center"> Выясняем высоту потолка</div>
 					</div>
@@ -178,7 +178,7 @@ defined('_JEXEC') or die;
 				</div>
 			</li>
 			<li>
-				<div class="uk-slide uk-position-relative" style="background-color: #ccc;">
+				<div class="uk-slide uk-position-relative" style="background-color: #ccc; background-image: url(<?php echo $params->get('slide6-background'); ?>);">
 					<div class="uk-slide-title-wrapper">
 						<div class="uk-slide-title uk-text-bold uk-text-center"> Выясняем площадь комнаты</div>
 					</div>
@@ -225,7 +225,7 @@ defined('_JEXEC') or die;
 				</div>
 			</li>
 			<li>
-				<div class="uk-slide uk-position-relative" style="background-color: #ccc;">
+				<div class="uk-slide uk-position-relative" style="background-color: #ccc; background-image: url(<?php echo $params->get('slide7-background'); ?>);">
 					<div class="uk-slide-title-wrapper">
 						<div class="uk-slide-title uk-text-bold uk-text-center">Выясняем тип комнаты.</div>
 					</div>

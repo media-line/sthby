@@ -21,12 +21,13 @@
 			</fieldset>
 			<fieldset name="first" label="Первый слайд">
 				<field name="slide1-text" type="text" label="Текст"/>	
-				<field name="slide1-button" type="editor" filter="safehtml" label="Текст на кнопке"/>		
+				<field name="slide1-button" type="editor" filter="safehtml" label="Текст на кнопке"/><field name="slide1-background" type="media" label="Текст на кнопке"/>		
 			</fieldset>
 			<fieldset name="second" label="Второй слайд">
 				<field name="slide2-question" type="text" label="Вопрос"/>	
 				<field name="slide2-answer1" type="text" label="Ответ"/>	
-				<field name="slide2-answer2" type="text" label="Ответ"/>		
+				<field name="slide2-answer2" type="text" label="Ответ"/>	
+				<field name="slide2-background" type="media" label="Текст на кнопке"/>					
 			</fieldset>
 			<fieldset name="third" label="Третий слайд">
 				<field name="slide3-question" type="text" label="Вопрос"/>	
@@ -34,16 +35,19 @@
 				<field name="slide3-answer2" type="text" label="Ответ"/>		
 				<field name="slide3-answer3" type="text" label="Ответ"/>
 				<field name="slide3-answer4" type="text" label="Ответ"/>
+				<field name="slide3-background" type="media" label="Текст на кнопке"/>
 			</fieldset>
 			<fieldset name="fourth" label="Четвёртый слайд">
 				<field name="slide4-question" type="text" label="Вопрос"/>	
 				<field name="slide4-answer1" type="text" label="Название параметра"/>	
 				<field name="slide4-answer2" type="text" label="Название параметра"/>	
+				<field name="slide4-background" type="media" label="Текст на кнопке"/>
 			</fieldset>
 			<fieldset name="fifth" label="Пятый слайд">
 				<field name="slide5-question" type="text" label="Вопрос"/>	
 				<field name="slide5-answer1" type="text" label="Ответ"/>	
-				<field name="slide5-answer2" type="text" label="Ответ"/>	
+				<field name="slide5-answer2" type="text" label="Ответ"/>
+				<field name="slide5-background" type="media" label="Текст на кнопке"/>				
 			</fieldset>
 			<fieldset name="sixth" label="Шестой слайд">
 				<field name="slide6-question" type="text" label="Вопрос"/>	
@@ -65,6 +69,7 @@
 							label="Вариант ответа" />
 					</fieldset>
 				</field>	
+				<field name="slide6-background" type="media" label="Текст на кнопке"/>
 			</fieldset>
 			<fieldset
 				name="advanced">
