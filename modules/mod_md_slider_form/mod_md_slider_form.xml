@@ -26,7 +26,9 @@
 			<fieldset name="second" label="Второй слайд">
 				<field name="slide2-question" type="text" label="Вопрос"/>	
 				<field name="slide2-answer1" type="text" label="Ответ"/>	
+				<field name="slide2-answer1-back" type="media" label="Картинка ответа"/>
 				<field name="slide2-answer2" type="text" label="Ответ"/>	
+				<field name="slide2-answer2-back" type="media" label="Картинка ответа"/>
 				<field name="slide2-background" type="media" label="Текст на кнопке"/>					
 			</fieldset>
 			<fieldset name="third" label="Третий слайд">
