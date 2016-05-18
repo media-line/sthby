@@ -12,47 +12,70 @@ defined('_JEXEC') or die;
 			<li>
 				<div class="uk-slide uk-position-relative" style="background-image: url(/images/slider/slide001.jpg);">
 					<div class="uk-slide-title-wrapper uk-position-absolute">
-						<div class="uk-slide-title uk-text-contrast uk-text-bold uk-text-center uk-position-absolute">Подберите радиатор прямо сейчас! </div>
+						<div class="uk-slide-title uk-text-contrast uk-text-bold uk-text-center uk-position-absolute"><?php echo $params->get('slide1-text'); ?></div>
 					</div>
 					<div class="uk-slide-button-wrapper uk-position-absolute">
 						<a href="#" class="uk-slide-button uk-homeslide-button uk-grid uk-grid-collapse uk-clearfix" data-uk-slideshow-item="next">
 							<div class="uk-width-1-5 uk-calculate-icon icon-calculator uk-position-relative">
 							</div>
-							<div class="uk-width-4-5 uk-button-text">
-								<div class="uk-slide-button-subtitle">
-									Воспользоваться
-								</div>
-								<div class="uk-slide-button-title uk-h2">
-									Он-лайн калькулятором
-								</div>
+							<div class="uk-width-4-5 uk-button-text uk-slide-button-subtitle">
+								<?php echo $params->get('slide1-button'); ?>
 							</div>
 						</a>
 					</div>
 				</div>
 			</li>
-			<li>
+			<li class="uk-calc-slide-2">
 				<div class="uk-slide uk-position-relative" style="background-color: #ccc;">
-					<div class="uk-slide-title-wrapper">
-						<div class="uk-slide-title uk-text-bold uk-text-center">Выясняем количество этажей</div>
-					</div>
-					<div class="">
-						<div>
-							<a href="#" class="uk-floors-less-3" data-uk-slideshow-item="next">
-								До 3-х этажей
-							</a>
+					<div class="uk-slide-wrap">
+						<a href="#" class="uk-slide-back" data-uk-slideshow-item="previous"><?php echo JText::_('MOD_MD_SLIDER_FORM_BACK'); ?></a>
+						<div class="uk-slide-title-wrapper">
+							<div class="uk-slide-title uk-text-bold uk-text-center"><?php echo $params->get('slide2-question'); ?></div>
 						</div>
-						<div>
-							<a href="#" class="uk-floors-more-3" data-uk-slideshow-item="3">
-								Более 3-х этажей
-							</a>
+						<div class="">
+							<div>
+								<a href="#" class="uk-floors-less-3" data-uk-slideshow-item="next">
+									<?php echo $params->get('slide2-answer1'); ?>
+								</a>
+							</div>
+							<div>
+								<a href="#" class="uk-floors-more-3" data-uk-slideshow-item="next">
+									<?php echo $params->get('slide2-answer2'); ?>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</li>	
-			<li class="uk-calc-slide-3">	
+			<li  class="uk-calc-slide-3">
 				<div class="uk-slide uk-position-relative" style="background-color: #ccc;">
 					<div class="uk-slide-title-wrapper">
-						<div class="uk-slide-title uk-text-bold uk-text-center">Выясняем высоту подоконника</div>
+						<div class="uk-slide-title uk-text-bold uk-text-center"><?php echo $params->get('slide3-question'); ?></div>
+					</div>
+					<div class="">
+						<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
+							<?php echo $params->get('slide3-answer1'); ?>
+							<input id="wall-factor" type="hidden" value="1" />
+						</a><br>
+						<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
+							<?php echo $params->get('slide3-answer2'); ?>
+							<input id="wall-factor" type="hidden" value="1.1" />
+						</a><br>
+						<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
+							<?php echo $params->get('slide3-answer3'); ?>
+							<input id="wall-factor" type="hidden" value="0.8" />
+						</a><br>
+						<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
+							<?php echo $params->get('slide3-answer4'); ?>
+							<input id="wall-factor" type="hidden" value="1" />
+						</a>
+					</div>
+				</div>
+			</li>
+			<li class="uk-calc-slide-4">	
+				<div class="uk-slide uk-position-relative" style="background-color: #ccc;">
+					<div class="uk-slide-title-wrapper">
+						<div class="uk-slide-title uk-text-bold uk-text-center"><?php echo $params->get('slide3-question'); ?></div>
 					</div>
 					 
 					<div class="uk-width-2-3 uk-container-center uk-margin-large-top">
@@ -105,31 +128,6 @@ defined('_JEXEC') or die;
 					<div class="">
 						<a href="#" class="uk-slide-button uk-text-contrast uk-homeslide-button" data-uk-slideshow-item="next">
 							Далее
-						</a>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="uk-slide uk-position-relative" style="background-color: #ccc;">
-					<div class="uk-slide-title-wrapper">
-						<div class="uk-slide-title uk-text-bold uk-text-center"> Выясняем тип стен</div>
-					</div>
-					<div class="">
-						<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
-							Кирпич
-							<input id="wall-factor" type="hidden" value="1" />
-						</a><br>
-						<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
-							Дерево
-							<input id="wall-factor" type="hidden" value="1.1" />
-						</a><br>
-						<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
-							Панель
-							<input id="wall-factor" type="hidden" value="0.8" />
-						</a><br>
-						<a href="#" class="uk-wall-type" data-uk-slideshow-item="next">
-							Газосиликат
-							<input id="wall-factor" type="hidden" value="1" />
 						</a>
 					</div>
 				</div>
