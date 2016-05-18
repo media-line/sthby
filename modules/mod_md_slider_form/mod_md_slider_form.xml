@@ -18,43 +18,53 @@
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
-				<field name="phone_list"
+			</fieldset>
+			<fieldset name="first" label="Первый слайд">
+				<field name="slide1-text" type="text" label="Текст"/>	
+				<field name="slide1-button" type="editor" filter="safehtml" label="Текст на кнопке"/>		
+			</fieldset>
+			<fieldset name="second" label="Второй слайд">
+				<field name="slide2-question" type="text" label="Вопрос"/>	
+				<field name="slide2-answer1" type="text" label="Ответ"/>	
+				<field name="slide2-answer2" type="text" label="Ответ"/>		
+			</fieldset>
+			<fieldset name="third" label="Третий слайд">
+				<field name="slide3-question" type="text" label="Вопрос"/>	
+				<field name="slide3-answer1" type="text" label="Ответ"/>	
+				<field name="slide3-answer2" type="text" label="Ответ"/>		
+				<field name="slide3-answer3" type="text" label="Ответ"/>
+				<field name="slide3-answer4" type="text" label="Ответ"/>
+			</fieldset>
+			<fieldset name="fourth" label="Четвёртый слайд">
+				<field name="slide4-question" type="text" label="Вопрос"/>	
+				<field name="slide4-answer1" type="text" label="Название параметра"/>	
+				<field name="slide4-answer2" type="text" label="Название параметра"/>	
+			</fieldset>
+			<fieldset name="fifth" label="Пятый слайд">
+				<field name="slide5-question" type="text" label="Вопрос"/>	
+				<field name="slide5-answer1" type="text" label="Ответ"/>	
+				<field name="slide5-answer2" type="text" label="Ответ"/>	
+			</fieldset>
+			<fieldset name="sixth" label="Шестой слайд">
+				<field name="slide6-question" type="text" label="Вопрос"/>	
+				<field name="slide6-answer1" type="text" label="Название параметра"/>
+				<field name="answer1"
 					type="Repeatable"
-					icon="list"
-					description="Список телефонов"
-					label="Список телефонов"
-					default=""
-					select="Показать">
-					<fieldset name="phone" repeat="true">
-						<field name="country_code"
-							label="Код страны"
-							default="+375"
-							type="text" />
-						<field name="operator_code"
-							label="Код оператора"
-							type="text"/>
-						<field name="phone_number"
-							label="Номер телефона"
-							type="text" />
-						<field name="note"
-							label="Примечание"
-							type="text" />
+					label="Варианты ответа">
+					<fieldset name="answer1_block" repeat="true">
+						<field name="var_answer" type="text"
+							label="Вариант ответа" />
 					</fieldset>
-				</field>
-				<field name="text_before"
-					label="Текст перед"
-					description="Текст перед списком телефонов"
-					type="editor"
-					width="600px"
-					height="250px"
-					filter="safehtml" />
-				<field name="text_after"
-					label="Текст после"
-					description="Текст после списка телефонов"
-					type="editor"
-					width="600px"
-					height="250px"
-					filter="safehtml" />
+				</field>					
+				<field name="slide6-answer2" type="text" label="Название параметра"/>	
+				<field name="answer2"
+					type="Repeatable"
+					label="Варианты ответа">
+					<fieldset name="answer2_block" repeat="true">
+						<field name="var_answer" type="text"
+							label="Вариант ответа" />
+					</fieldset>
+				</field>	
 			</fieldset>
 			<fieldset
 				name="advanced">

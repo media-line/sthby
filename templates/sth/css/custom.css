@@ -1,6 +1,12 @@
-/* ========================================================================
+﻿/* ========================================================================
    Подключение шрифтов (Font Styles)
 ========================================================================== */
+@font-face {
+  font-family: 'SegoePrint';
+  src: url('../fonts/SegoePrint.eot?#iefix') format('embedded-opentype'),  url('../fonts/SegoePrint.woff') format('woff'), url('../fonts/SegoePrint.ttf')  format('truetype'), url('../fonts/SegoePrint.svg#SegoePrint') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 @font-face {
     font-family: 'iconfont';
     src:    url('/templates/sth/fonts/iconfont.eot?xzie2g');
@@ -377,7 +383,7 @@ input.uk-search-field:focus,
    Стили слайдера-калькулятора (Slider styles)
 ========================================================================== */
 .uk-md-sliderform .uk-slide{
-	min-height: 400px;
+	height: 400px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -1517,4 +1523,40 @@ html.presto .b-loader {
 }
 .cart-lable {
 	margin-right: 10px;
+}
+
+=======
+   Стили калькулятора (Calculator styles)
+========================================================================== */
+.uk-slide p {
+	margin: 5px 0;
+}
+.uk-slide-back {
+	font-family: 'SegoePrint';
+	color: #424c4d;
+	border-bottom: 1px solid #cecfd1;
+	-webkit-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	position: absolute;
+	left: 12%;
+	top: 15%;
+}
+.uk-slide-back:hover {
+	color: #424c4d;
+	border-bottom: 1px solid transparent;
+}
+.uk-calc-slide-1 .uk-button-text {
+	color: white;
+}
+.uk-calc-slide-2 .uk-slide{
+	padding: 20px 100px;
+}
+.uk-calc-slide-2 .uk-slide-wrap{
+	background-color: white;
+	height: 100%;
+}
+.uk-slide-title-wrapper {
+	padding-top: 30px;
 }
