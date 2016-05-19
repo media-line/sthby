@@ -19,25 +19,24 @@
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 ?>
-<div class="additional-images">
-	<?php
-	$start_image = VmConfig::get('add_img_main', 1) ? 0 : 1;
-	for ($i = $start_image; $i < count($this->product->images); $i++) {
-		$image = $this->product->images[$i];
-		?>
-		<div class="floatleft">
-			<?php
-			if(VmConfig::get('add_img_main', 1)) {
-				echo $image->displayMediaThumb('class="product-image" style="cursor: pointer"',false,$image->file_description);
-				echo '<a href="'. $image->file_url .'"  class="product-image image-'. $i .'" style="display:none;" title="'. $image->file_meta .'" rel="vm-additional-images"></a>';
-			} else {
-				echo $image->displayMediaThumb("",true,"rel='vm-additional-images'",true,$image->file_description);
-			}
+<div class="jshop_img_description">
+	<div id="list_product_image_thumb" class="uk-product-thumbs">
+		<?php
+		$start_image = VmConfig::get('add_img_main', 1) ? 0 : 1;
+		for ($i = $start_image; $i < count($this->product->images); $i++) {
+			$image = $this->product->images[$i];
 			?>
-		</div>
-	<?php
-	}
-	?>
-	<div class="clear"></div>
+				<?php
+				if(VmConfig::get('add_img_main', 1)) {
+					echo $image->displayMediaThumb('class="product-image" style="cursor: pointer"',false,$image->file_description);
+					echo '<a href="'. $image->file_url .'"  class="uk-product-thumb uk-jshop-img-thumb uk-margin-left-remove product-image image-'. $i .'" style="display:none;" title="'. $image->file_meta .'" rel="vm-additional-images"></a>';
+				} else {
+					echo $image->displayMediaThumb("",true,"rel='vm-additional-images'",true,$image->file_description);
+				}
+				?>
+		<?php
+		}
+		?>
+		<div class="clear"></div>
+	</div>
 </div>
-

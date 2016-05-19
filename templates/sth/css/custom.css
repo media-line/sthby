@@ -1419,7 +1419,7 @@ html.presto .b-loader {
 .uk-product-thumbs{
 	margin-top: 10px;
 }
-.uk-product-thumbs > img{
+.uk-product-thumbs img{
 	width: 55px;
 	height: 55px;
 	display: inline-block;
@@ -1434,7 +1434,7 @@ html.presto .b-loader {
 	border-color: #e40e1b;
 	transition: all 0.2s ease;
 }
-.uk-product-thumbs > img + img{
+.uk-product-thumbs a + a img {
 	margin-left: 15px;
 }
 .uk-product-full-title{
@@ -1900,6 +1900,10 @@ html.presto .b-loader {
 }
 .uk-calc-slide-result .uk-h3 {
 	padding-bottom: 10px;
+}
+.product-price {
+	float: none;
+	text-align: center;
 }
 /* ========================================================================
    Форма оформления заказа (Form order)

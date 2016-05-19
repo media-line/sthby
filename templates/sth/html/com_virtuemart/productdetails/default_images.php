@@ -63,7 +63,7 @@ if (!empty($this->product->images)) {
 	$image = $this->product->images[0];
 	?>
 	<div class="main-image">
-		<?php echo $image->displayMediaFull("",true,"rel='vm-additional-images'"); ?>
+		<?php echo $image->displayMediaFull("",true,"rel='uk-pruduct-main-image uk-text-center lightbox'"); ?>
 		<div class="clear"></div>
 	</div>
 	<?php

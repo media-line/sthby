@@ -46,59 +46,42 @@ foreach ($viewData['products'] as $type => $products ) {
 		<?php foreach ( $products as $product ) {
 		// Show Products ?>
 		<div class="uk-width-1-<?php echo $products_per_row; ?>">
-			<div class="spacer">
-				<div class="vm-product-media-container">
-
-						<a title="<?php echo $product->product_name ?>" href="<?php echo $product->link.$ItemidStr; ?>">
-							<?php
-							echo $product->images[0]->displayMediaThumb('class="browseProductImage"', false);
-							?>
-						</a>
-
-				</div>
-
-				<div class="vm-product-rating-container">
-					<?php echo shopFunctionsF::renderVmSubLayout('rating',array('showRating'=>$showRating, 'product'=>$product));
-					if ( VmConfig::get ('display_stock', 1)) { ?>
-						<span class="vmicon vm2-<?php echo $product->stock->stock_level ?>" title="<?php echo $product->stock->stock_tip ?>"></span>
-					<?php }
-					echo shopFunctionsF::renderVmSubLayout('stockhandle',array('product'=>$product));
-					?>
-				</div>
-
-
-					<div class="vm-product-descr-container-<?php echo $rowsHeight[$row]['product_s_desc'] ?>">
-						<h2><?php echo JHtml::link ($product->link.$ItemidStr, $product->product_name); ?></h2>
-						<?php if(!empty($rowsHeight[$row]['product_s_desc'])){
-						?>
-						<p class="product_s_desc">
-							<?php // Product Short Description
-							if (!empty($product->product_s_desc)) {
-								echo shopFunctionsF::limitStringByWord ($product->product_s_desc, 60, ' ...') ?>
-							<?php } ?>
-						</p>
-				<?php  } ?>
+			<div class="uk-product-teaser-block uk-position-relative">
+				<div class="uk-product-teaser uk-position-absolute uk-text-center">
+					<div class="image">
+						<div class="uk-product-teaser-image uk-inline-block">
+							<a title="<?php echo $product->product_name ?>" href="<?php echo $product->link.$ItemidStr; ?>">
+								<img src="<?php echo $product->file_url; ?>" alt="">
+							</a>
+						</div>
 					</div>
 
+					<div class="vm-product-rating-container">
+						<?php echo shopFunctionsF::renderVmSubLayout('rating',array('showRating'=>$showRating, 'product'=>$product));
+						if ( VmConfig::get ('display_stock', 1)) { ?>
+							<span class="vmicon vm2-<?php echo $product->stock->stock_level ?>" title="<?php echo $product->stock->stock_tip ?>"></span>
+						<?php }
+						echo shopFunctionsF::renderVmSubLayout('stockhandle',array('product'=>$product));
+						?>
+					</div>
 
-				<?php //echo $rowsHeight[$row]['price'] ?>
-				<div class="vm3pr-<?php echo $rowsHeight[$row]['price'] ?>"> <?php
-					echo shopFunctionsF::renderVmSubLayout('prices',array('product'=>$product,'currency'=>$currency)); ?>
-					<div class="clear"></div>
-				</div>
-				<?php //echo $rowsHeight[$row]['customs'] ?>
-				<div class="vm3pr-<?php echo $rowsHeight[$row]['customfields'] ?>"> <?php
-					echo shopFunctionsF::renderVmSubLayout('addtocart',array('product'=>$product,'rowHeights'=>$rowsHeight[$row], 'position' => array('ontop', 'addtocart'))); ?>
-				</div>
+					<div class="uk-product-teaser-name-wrapper uk-inline-block">
+						<div class="uk-product-teaser-name uk-inline-block">
+							<a title="<?php echo $product->product_name ?>" href="<?php echo $product->link.$ItemidStr; ?>"><?php echo $product->product_name; ?> <?php echo $product->product_s_desc; ?></a>
+						</div>
+					</div>
 
-				<div class="vm-details-button">
-					<?php // Product Details Button
-					$link = empty($product->link)? $product->canonical:$product->link;
-					echo JHtml::link($link.$ItemidStr,vmText::_ ( 'COM_VIRTUEMART_PRODUCT_DETAILS' ), array ('title' => $product->product_name, 'class' => 'product-details' ) );
-					//echo JHtml::link ( JRoute::_ ( 'index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=' . $product->virtuemart_product_id . '&virtuemart_category_id=' . $product->virtuemart_category_id , FALSE), vmText::_ ( 'COM_VIRTUEMART_PRODUCT_DETAILS' ), array ('title' => $product->product_name, 'class' => 'product-details' ) );
-					?>
-				</div>
-
+					<div class="uk-product-teaser-info uk-inline-block">	
+						<div class="uk-product-teaser-price uk-text-large"> <?php
+							echo shopFunctionsF::renderVmSubLayout('prices',array('product'=>$product,'currency'=>$currency)); ?>
+						</div>
+						
+						<div class="buttons">
+							<a class="uk-button uk-button-small uk-margin-large-top" title="<?php echo $product->product_name ?>" href="<?php echo $product->link.$ItemidStr; ?>"><?php echo JText::_('COM_VIRTUEMART_READMORE'); ?></a>
+						</div>						
+					</div>
+					
+				</div>	
 			</div>
 		</div>
 

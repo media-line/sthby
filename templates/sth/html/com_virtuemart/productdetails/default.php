@@ -35,7 +35,7 @@ if(vRequest::getInt('print',false)){ ?>
 
 <div class="productdetails-view productdetails" >
 
-    <?php
+    <?php/*
     // Product Navigation
     if (VmConfig::get('product_navigation', 1)) {
 	?>
@@ -53,7 +53,7 @@ if(vRequest::getInt('print',false)){ ?>
 	    ?>
     	<div class="clear"></div>
         </div>
-    <?php } // Product Navigation END
+    <?php } // Product Navigation END*/
     ?>
 
 	<?php // Back To Category Button
@@ -65,144 +65,150 @@ if(vRequest::getInt('print',false)){ ?>
 		$categoryName = vmText::_('COM_VIRTUEMART_SHOP_HOME') ;
 	}
 	?>
-	<div class="back-to-category">
+	<!--<div class="back-to-category">
     	<a href="<?php echo $catURL ?>" class="product-details" title="<?php echo $categoryName ?>"><?php echo vmText::sprintf('COM_VIRTUEMART_CATEGORY_BACK_TO',$categoryName) ?></a>
-	</div>
+	</div>-->
+	<div class="uk-grid">
+		<div class="uk-width-2-3">
+			<?php // Product Title   ?>
+			<h1 itemprop="name" class="uk-text-bold uk-product-full-title uk-margin-small-top uk-margin-bottom-remove"><?php echo $this->product->product_name ?></h1>
+			<?php // Product Title END   ?>
 
-    <?php // Product Title   ?>
-    <h1 itemprop="name"><?php echo $this->product->product_name ?></h1>
-    <?php // Product Title END   ?>
+			<?php // afterDisplayTitle Event
+			echo $this->product->event->afterDisplayTitle ?>
 
-    <?php // afterDisplayTitle Event
-    echo $this->product->event->afterDisplayTitle ?>
-
-    <?php
-    // Product Edit Link
-    echo $this->edit_link;
-    // Product Edit Link END
-    ?>
-
-    <?php
-    // PDF - Print - Email Icon
-    if (VmConfig::get('show_emailfriend') || VmConfig::get('show_printicon') || VmConfig::get('pdf_icon')) {
-	?>
-        <div class="icons">
-	    <?php
-
-	    $link = 'index.php?tmpl=component&option=com_virtuemart&view=productdetails&virtuemart_product_id=' . $this->product->virtuemart_product_id;
-
-		echo $this->linkIcon($link . '&format=pdf', 'COM_VIRTUEMART_PDF', 'pdf_button', 'pdf_icon', false);
-	    //echo $this->linkIcon($link . '&print=1', 'COM_VIRTUEMART_PRINT', 'printButton', 'show_printicon');
-		echo $this->linkIcon($link . '&print=1', 'COM_VIRTUEMART_PRINT', 'printButton', 'show_printicon',false,true,false,'class="printModal"');
-		$MailLink = 'index.php?option=com_virtuemart&view=productdetails&task=recommend&virtuemart_product_id=' . $this->product->virtuemart_product_id . '&virtuemart_category_id=' . $this->product->virtuemart_category_id . '&tmpl=component';
-	    echo $this->linkIcon($MailLink, 'COM_VIRTUEMART_EMAIL', 'emailButton', 'show_emailfriend', false,true,false,'class="recommened-to-friend"');
-	    ?>
-    	<div class="clear"></div>
-        </div>
-    <?php } // PDF - Print - Email Icon END
-    ?>
-
-    <?php
-    // Product Short Description
-    if (!empty($this->product->product_s_desc)) {
-	?>
-        <div class="product-short-description">
-	    <?php
-	    /** @todo Test if content plugins modify the product description */
-	    echo nl2br($this->product->product_s_desc);
-	    ?>
-        </div>
-	<?php
-    } // Product Short Description END
-
-	echo shopFunctionsF::renderVmSubLayout('customfields',array('product'=>$this->product,'position'=>'ontop'));
-    ?>
-
-    <div class="vm-product-container">
-	<div class="vm-product-media-container">
-<?php
-echo $this->loadTemplate('images');
-?>
-	</div>
-
-	<div class="vm-product-details-container">
-	    <div class="spacer-buy-area">
-
-		<?php
-		// TODO in Multi-Vendor not needed at the moment and just would lead to confusion
-		/* $link = JRoute::_('index2.php?option=com_virtuemart&view=virtuemart&task=vendorinfo&virtuemart_vendor_id='.$this->product->virtuemart_vendor_id);
-		  $text = vmText::_('COM_VIRTUEMART_VENDOR_FORM_INFO_LBL');
-		  echo '<span class="bold">'. vmText::_('COM_VIRTUEMART_PRODUCT_DETAILS_VENDOR_LBL'). '</span>'; ?><a class="modal" href="<?php echo $link ?>"><?php echo $text ?></a><br />
-		 */
-		?>
-
-		<?php
-		echo shopFunctionsF::renderVmSubLayout('rating',array('showRating'=>$this->showRating,'product'=>$this->product));
-
-		if (is_array($this->productDisplayShipments)) {
-		    foreach ($this->productDisplayShipments as $productDisplayShipment) {
-			echo $productDisplayShipment . '<br />';
-		    }
-		}
-		if (is_array($this->productDisplayPayments)) {
-		    foreach ($this->productDisplayPayments as $productDisplayPayment) {
-			echo $productDisplayPayment . '<br />';
-		    }
-		}
-
-		//In case you are not happy using everywhere the same price display fromat, just create your own layout
-		//in override /html/fields and use as first parameter the name of your file
-		echo shopFunctionsF::renderVmSubLayout('prices',array('product'=>$this->product,'currency'=>$this->currency));
-		?> <div class="clear"></div><?php
-		echo shopFunctionsF::renderVmSubLayout('addtocart',array('product'=>$this->product));
-
-		echo shopFunctionsF::renderVmSubLayout('stockhandle',array('product'=>$this->product));
-
-		// Ask a question about this product
-		if (VmConfig::get('ask_question', 0) == 1) {
-			$askquestion_url = JRoute::_('index.php?option=com_virtuemart&view=productdetails&task=askquestion&virtuemart_product_id=' . $this->product->virtuemart_product_id . '&virtuemart_category_id=' . $this->product->virtuemart_category_id . '&tmpl=component', FALSE);
+			<?php
+			// Product Edit Link
+			echo $this->edit_link;
+			// Product Edit Link END
 			?>
-			<div class="ask-a-question">
-				<a class="ask-a-question" href="<?php echo $askquestion_url ?>" rel="nofollow" ><?php echo vmText::_('COM_VIRTUEMART_PRODUCT_ENQUIRY_LBL') ?></a>
-			</div>
-		<?php
-		}
-		?>
 
-		<?php
-		// Manufacturer of the Product
-		if (VmConfig::get('show_manufacturers', 1) && !empty($this->product->virtuemart_manufacturer_id)) {
-		    echo $this->loadTemplate('manufacturer');
-		}
-		?>
+			<?php
+			// PDF - Print - Email Icon
+			if (VmConfig::get('show_emailfriend') || VmConfig::get('show_printicon') || VmConfig::get('pdf_icon')) {
+			?>
+				<div class="icons">
+				<?php
 
-	    </div>
+				$link = 'index.php?tmpl=component&option=com_virtuemart&view=productdetails&virtuemart_product_id=' . $this->product->virtuemart_product_id;
+
+				echo $this->linkIcon($link . '&format=pdf', 'COM_VIRTUEMART_PDF', 'pdf_button', 'pdf_icon', false);
+				//echo $this->linkIcon($link . '&print=1', 'COM_VIRTUEMART_PRINT', 'printButton', 'show_printicon');
+				echo $this->linkIcon($link . '&print=1', 'COM_VIRTUEMART_PRINT', 'printButton', 'show_printicon',false,true,false,'class="printModal"');
+				$MailLink = 'index.php?option=com_virtuemart&view=productdetails&task=recommend&virtuemart_product_id=' . $this->product->virtuemart_product_id . '&virtuemart_category_id=' . $this->product->virtuemart_category_id . '&tmpl=component';
+				echo $this->linkIcon($MailLink, 'COM_VIRTUEMART_EMAIL', 'emailButton', 'show_emailfriend', false,true,false,'class="recommened-to-friend"');
+				?>
+				<div class="clear"></div>
+				</div>
+			<?php } // PDF - Print - Email Icon END
+			?>
+
+			<?php
+			// Product Short Description
+			if (!empty($this->product->product_s_desc)) {
+			?>
+				<div class="uk-product-full-shortdesc">
+				<?php
+				/** @todo Test if content plugins modify the product description */
+				echo nl2br($this->product->product_s_desc);
+				?>
+				</div>
+			<?php
+			} // Product Short Description END
+
+			echo shopFunctionsF::renderVmSubLayout('customfields',array('product'=>$this->product,'position'=>'ontop'));
+			?>
+		</div>
+		<div class="uk-width-1-3 uk-text-right">
+			<?php if ($this->product->intnotes) { ?>
+				<a class="uk-button uk-button-small uk-read-about uk-position-relative" href="<?php echo $this->product->intnotes; ?>">
+					<span><?php echo JText::_('COM_VIRTUEMART_READ_ABOUT_PRODUCT'); ?></span>
+				</a>
+			<?php } ?>
+		</div>
 	</div>
-	<div class="clear"></div>
 
+	<div class="uk-grid uk-grid-collapse">
+			<div class="uk-width-1-4 uk-product-full-image-block">
+				<?php
+				echo $this->loadTemplate('images');
+				$count_images = count ($this->product->images);
+				if ($count_images > 1) {
+					echo $this->loadTemplate('images_additional');
+				}
+				?>
+			</div>
 
-    </div>
+			<div class="uk-width-3-4">
+				<div class="uk-product-full-description-block">
+					<div class="uk-product-full-description">
+						<?php if (!empty($this->product->product_desc)) { ?>
+							<?php echo $this->product->product_desc; ?>
+						<?php } ?>
+					</div>
+				</div>
+			</div>
+	</div>
+	
+	
+				<div class="spacer-buy-area">
+
+				<?php
+				// TODO in Multi-Vendor not needed at the moment and just would lead to confusion
+				/* $link = JRoute::_('index2.php?option=com_virtuemart&view=virtuemart&task=vendorinfo&virtuemart_vendor_id='.$this->product->virtuemart_vendor_id);
+				  $text = vmText::_('COM_VIRTUEMART_VENDOR_FORM_INFO_LBL');
+				  echo '<span class="bold">'. vmText::_('COM_VIRTUEMART_PRODUCT_DETAILS_VENDOR_LBL'). '</span>'; ?><a class="modal" href="<?php echo $link ?>"><?php echo $text ?></a><br />
+				 */
+				?>
+
+				<?php
+				echo shopFunctionsF::renderVmSubLayout('rating',array('showRating'=>$this->showRating,'product'=>$this->product));
+
+				if (is_array($this->productDisplayShipments)) {
+					foreach ($this->productDisplayShipments as $productDisplayShipment) {
+					echo $productDisplayShipment . '<br />';
+					}
+				}
+				if (is_array($this->productDisplayPayments)) {
+					foreach ($this->productDisplayPayments as $productDisplayPayment) {
+					echo $productDisplayPayment . '<br />';
+					}
+				}
+
+				//In case you are not happy using everywhere the same price display fromat, just create your own layout
+				//in override /html/fields and use as first parameter the name of your file
+				echo shopFunctionsF::renderVmSubLayout('prices',array('product'=>$this->product,'currency'=>$this->currency));
+				?> <div class="clear"></div><?php
+				echo shopFunctionsF::renderVmSubLayout('addtocart',array('product'=>$this->product));
+
+				echo shopFunctionsF::renderVmSubLayout('stockhandle',array('product'=>$this->product));
+
+				// Ask a question about this product
+				if (VmConfig::get('ask_question', 0) == 1) {
+					$askquestion_url = JRoute::_('index.php?option=com_virtuemart&view=productdetails&task=askquestion&virtuemart_product_id=' . $this->product->virtuemart_product_id . '&virtuemart_category_id=' . $this->product->virtuemart_category_id . '&tmpl=component', FALSE);
+					?>
+					<div class="ask-a-question">
+						<a class="ask-a-question" href="<?php echo $askquestion_url ?>" rel="nofollow" ><?php echo vmText::_('COM_VIRTUEMART_PRODUCT_ENQUIRY_LBL') ?></a>
+					</div>
+				<?php
+				}
+				?>
+
+				<?php
+				// Manufacturer of the Product
+				if (VmConfig::get('show_manufacturers', 1) && !empty($this->product->virtuemart_manufacturer_id)) {
+					echo $this->loadTemplate('manufacturer');
+				}
+				?>
+
+				</div>	
+	
 <?php
-	$count_images = count ($this->product->images);
-	if ($count_images > 1) {
-		echo $this->loadTemplate('images_additional');
-	}
 
 	// event onContentBeforeDisplay
 	echo $this->product->event->beforeDisplayContent; ?>
 
 	<?php
-	//echo ($this->product->product_in_stock - $this->product->product_ordered);
-	// Product Description
-	if (!empty($this->product->product_desc)) {
-	    ?>
-        <div class="product-description" >
-	<?php /** @todo Test if content plugins modify the product description */ ?>
-    	<span class="title"><?php echo vmText::_('COM_VIRTUEMART_PRODUCT_DESC_TITLE') ?></span>
-	<?php echo $this->product->product_desc; ?>
-        </div>
-	<?php
-    } // Product Description END
 
 	echo shopFunctionsF::renderVmSubLayout('customfields',array('product'=>$this->product,'position'=>'normal'));
 
