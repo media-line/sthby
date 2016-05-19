@@ -1533,7 +1533,7 @@ html.presto .b-loader {
 .uk-calc-slide-1 .uk-button-text {
 	color: white;
 }
-.uk-calc-slide-2 .uk-slide, .uk-calc-slide-3 .uk-slide, .uk-calc-slide-4 .uk-slide, .uk-calc-slide-5 .uk-slide, .uk-calc-slide-6 .uk-slide {
+.uk-calc-slide-2 .uk-slide, .uk-calc-slide-3 .uk-slide, .uk-calc-slide-4 .uk-slide, .uk-calc-slide-5 .uk-slide, .uk-calc-slide-6 .uk-slide, .uk-calc-slide-result .uk-slide {
 	padding: 20px 100px;
 }
 .uk-slide-title-wrapper {
@@ -1605,7 +1605,7 @@ html.presto .b-loader {
 .uk-slide-answer-block:hover .uk-slide-shadow-overlay {
 	opacity: 1;
 }
-.uk-slide-answer-block .uk-floors-more-3 {
+.uk-slide-answer-block .uk-floors {
 	position: relative;
 	z-index: 2;
 	background-color: rgba(0,0,0,0.7);
@@ -1616,7 +1616,7 @@ html.presto .b-loader {
 	transition-duration: 0.3s;
 	padding: 80px 0 30px 70px;
 }
-.uk-slide-answer-block:hover .uk-floors-more-3 {
+.uk-slide-answer-block:hover .uk-floors {
 	background-color: rgba(0,0,0,0);
 }
 .uk-calc-slide-2 .uk-slide-answer-text {
@@ -1624,7 +1624,7 @@ html.presto .b-loader {
 	font-weight: 300;
 	color: white;
 }
-.uk-calc-slide-2 .uk-floors-more-3 a { 
+.uk-calc-slide-2 .uk-floors a { 
 	color: white;
 	font-size: 16px;
 	padding: 15px 30px;
@@ -1665,6 +1665,9 @@ html.presto .b-loader {
 }
 .uk-calc-slide-3 .uk-slide-back, .uk-calc-slide-4 .uk-slide-back, .uk-calc-slide-5 .uk-slide-back, .uk-calc-slide-6 .uk-slide-back {
 	color: white;
+}
+.uk-calc-slide-2 .uk-slide-wrap {
+	background-color: white;
 }
 .uk-slide-wrap-shadow {
 	background-color: rgba(0,0,0,0.4);
@@ -1885,6 +1888,18 @@ html.presto .b-loader {
 }
 .uk-calc-slide-6 .uk-slide-wrap {
 	overflow: visible;
+}
+.uk-dropdown li {
+	cursor: pointer;
+}
+.uk-calc-slide-result .uk-slide-wrap {
+	padding: 0 80px;
+}
+.uk-calc-slide-result .uk-slide-title {
+	padding-bottom: 15px;
+}
+.uk-calc-slide-result .uk-h3 {
+	padding-bottom: 10px;
 }
 /* ========================================================================
    Форма оформления заказа (Form order)

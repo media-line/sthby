@@ -69,11 +69,11 @@ $verticalseparator = " vertical-separator";
       <div class="spacer">
         <h2>
           <a href="<?php echo $caturl ?>" title="<?php echo vmText::_($category->category_name) ?>">
-          <?php echo vmText::_($category->category_name) ?>
-          <br />
           <?php // if ($category->ids) {
             echo $category->images[0]->displayMediaThumb("",false);
           //} ?>
+		  <br />
+          <?php echo vmText::_($category->category_name) ?>
           </a>
         </h2>
       </div>
