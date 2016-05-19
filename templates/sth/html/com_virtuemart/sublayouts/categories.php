@@ -19,8 +19,31 @@
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
+//числа с которыми идет сравнение для подсчета кол-ва товаров (плюшка 'Более 100')
+$twoDigit = 10;
+$threeDigit = 100;
+$fourDigit = 1000;
+
 $categories = $viewData['categories'];
 $categories_per_row = VmConfig::get ( 'categories_per_row', 3 );
+
+function countProductsByCategoryRecursive ($categoryId = 0) {
+ 
+    $categoryModel = VmModel::getModel ('category');
+    $childrenCategories = $categoryModel->getChildCategoryList(null, $categoryId);
+ 
+    $product_count = 0;
+ 
+    if( ! $childrenCategories){
+        $product_count += $categoryModel->countProducts ($categoryId);
+    }else{
+        foreach($childrenCategories as $value){
+            $product_count += countProductsByCategoryRecursive($value->virtuemart_category_id);
+        }
+    }
+ 
+    return $product_count;
+}
 
 
 if ($categories) {
@@ -42,6 +65,19 @@ $verticalseparator = " vertical-separator";
 
 // Start the Output
     foreach ( $categories as $category ) {
+	
+		$productsCount = countProductsByCategoryRecursive($category->virtuemart_category_id);
+		$str = $productsCount.'';
+		$countStr = '';
+		if (($productsCount > $twoDigit) && ($productsCount < $threeDigit)){
+			$countStr = JText::_("TPL_SITE_CATALOG_MORE_TEXT").$str[0].'0';
+		}
+		if (($productsCount > $threeDigit) && ($productsCount < $fourDigit)){
+			$countStr = JText::_("TPL_SITE_CATALOG_MORE_TEXT").$str[0].$str[1].'0';
+		}
+		if ($productsCount > $fourDigit){
+			$countStr = JText::_("TPL_SITE_CATALOG_MORE_TEXT").$str[0].$str[1].'00';
+		}
 
 	    // Show the horizontal seperator
 	   // вывод по строкам и горизонтальный сепаратор
@@ -51,7 +87,7 @@ $verticalseparator = " vertical-separator";
 
 	    // this is an indicator wether a row needs to be opened or not
 	    if ($iCol == 1) { ?>
-	<div class="">
+	<div class="uk-list-category uk-grid">
         <?php }
 
         // Show the vertical separator
@@ -65,18 +101,22 @@ $verticalseparator = " vertical-separator";
         $caturl = JRoute::_ ( 'index.php?option=com_virtuemart&view=category&virtuemart_category_id=' . $category->virtuemart_category_id , FALSE);
 
           // Show Category ?>
-    <div class="category floatleft<?php echo $category_cellwidth . $show_vertical_separator ?>">
-      <div class="spacer">
-        <h2>
-          <a href="<?php echo $caturl ?>" title="<?php echo vmText::_($category->category_name) ?>">
-          <?php // if ($category->ids) {
-            echo $category->images[0]->displayMediaThumb("",false);
-          //} ?>
-		  <br />
-          <?php echo vmText::_($category->category_name) ?>
-          </a>
-        </h2>
-      </div>
+    <div class="uk-width-1-<?php echo $categories_per_row; ?> uk-text-center">
+		<a href="<?php echo $caturl ?>" title="<?php echo vmText::_($category->category_name) ?>" class="uk-category-teaser uk-inline-block">
+			<div class="uk-category-teaser-img uk-inline-block">
+				<?php // if ($category->ids) {
+					echo $category->images[0]->displayMediaThumb("",false);
+				//} ?>
+			</div>
+			<div>
+				<div class="uk-category-teaser-name uk-h4 uk-text-bold uk-title-bordered uk-position-relative uk-text-center">
+					<?php echo vmText::_($category->category_name) ?>
+					<?php if ($countStr != ''):?>
+						<div class="uk-category-teaser-count uk-position-absolute uk-text-contrast"><?php echo $countStr; ?></div>
+					<?php endif; ?>
+				</div>
+			</div>
+		</a>
     </div>
 	    <?php
 	    $iCategory ++;

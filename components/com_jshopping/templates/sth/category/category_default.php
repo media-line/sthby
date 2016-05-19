@@ -49,7 +49,7 @@ $fourDigit = 1000;
 					if ($productsCount > $fourDigit){
 						$countStr = JText::_("TPL_SITE_CATALOG_MORE_TEXT").$str[0].$str[1].'00';
 					}
-			?>
+				?>
                 
                 <div class = "uk-width-1-<?php echo $this->count_category_to_row;?>">
 					<a class="uk-category-teaser uk-inline-block" href = "<?php print $category->category_link;?>">
