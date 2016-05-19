@@ -90,10 +90,10 @@ JHtml::_ ('behavior.formvalidation');
 		<input type='hidden' name='view' value='cart'/>
 	</form>
 
-		<!-- Форма оформления заказа -->
-		<?php
-			require_once __DIR__ . '/order_form.php';
-		?>
+<!-- Форма оформления заказа -->
+<?php
+	require __DIR__ . '/order_form.php';
+?>
 
 
 <?php
