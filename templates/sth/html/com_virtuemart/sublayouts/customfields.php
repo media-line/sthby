@@ -20,7 +20,6 @@ if(isset($viewData['class'])){
 } else {
 	$class = 'product-fields';
 }
-
 if (!empty($product->customfieldsSorted[$position])) {
 	?>
 	<div class="<?php echo $class?>">

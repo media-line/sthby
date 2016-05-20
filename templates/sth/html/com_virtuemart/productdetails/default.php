@@ -149,9 +149,52 @@ if(vRequest::getInt('print',false)){ ?>
 				</div>
 			</div>
 	</div>
+
+	<div class="uk-child-fields">
+		<table>
+			<?php $productModel = VmModel::getModel ('product'); ?>
+			<?php $customFields = $this->product->customfieldsSorted['normal'];
+			foreach ($customFields as $customField) {
+				if ($customField->virtuemart_custom_id == 4) {
+					$productsChildId = $customField->options; 
+					$count=0;
+					foreach ($productsChildId as $productChildId => $productChildName) {
+						if ($productChildId != $this->product->virtuemart_product_id) {
+							$productChild = $productModel->getProduct($productChildId); 
+							$customFieldsChild = $productChild->customfields; ?>
+							<?php if ($count == 0) { ?>
+								<tr class="uk-child-products">	
+									<td><?php echo JText::_('COM_VIRTUEMART_PRODUCT_NAME'); ?></td>
+									<td><?php echo JText::_('COM_VIRTUEMART_PRODUCT_PRICE'); ?></td>
+									<?php foreach ($customFieldsChild as $customFieldChild) {
+										if ($customFieldChild->virtuemart_custom_id != 4) { ?>
+											<td><?php echo $customFieldChild->custom_title; ?></td>
+										<?php }
+									} ?>
+									<td></td>
+								</tr>
+							<?php } ?>
+							<tr class="uk-child-products">
+								<td><?php echo $productChild->product_name; ?></td>
+								<td><?php echo $productChild->prices['salesPrice']; ?></td>
+									
+								<?php foreach ($customFieldsChild as $customFieldChild) {
+									if ($customFieldChild->virtuemart_custom_id != 4) { ?>
+										<td><?php echo $customFieldChild->customfield_value; ?></td>
+									<?php }
+								} ?>
+									
+								<td><input type="radio" name="select_child" value="<?php echo $productChildId; ?>"><label></label></td>
+							</tr>
+						<?php $count++;
+						} 
+					} ?>
+				<?php }
+			} ?>
+		</table>
+	</div>
 	
-	
-				<div class="spacer-buy-area">
+	<div class="uk-grid">
 
 				<?php
 				// TODO in Multi-Vendor not needed at the moment and just would lead to confusion
@@ -173,15 +216,27 @@ if(vRequest::getInt('print',false)){ ?>
 					foreach ($this->productDisplayPayments as $productDisplayPayment) {
 					echo $productDisplayPayment . '<br />';
 					}
-				}
+				} ?>
 
-				//In case you are not happy using everywhere the same price display fromat, just create your own layout
-				//in override /html/fields and use as first parameter the name of your file
-				echo shopFunctionsF::renderVmSubLayout('prices',array('product'=>$this->product,'currency'=>$this->currency));
-				?> <div class="clear"></div><?php
-				echo shopFunctionsF::renderVmSubLayout('addtocart',array('product'=>$this->product));
+				<div class="uk-width-1-3">
+					<div class="uk-product-full-price">
+						<div id="block_price" class="uk-h3 uk-text-bold uk-margin-top">
+							<?php 
+							//In case you are not happy using everywhere the same price display fromat, just create your own layout
+							//in override /html/fields and use as first parameter the name of your file				
+							echo shopFunctionsF::renderVmSubLayout('prices',array('product'=>$this->product,'currency'=>$this->currency));
+							?> 
+						</div>
+					</div>
+				</div>
+				
+				<div class="prod_buttons uk-width-2-3 uk-text-right">
+					<?php
+					echo shopFunctionsF::renderVmSubLayout('addtocart',array('product'=>$this->product));
+					?>
+				</div>
 
-				echo shopFunctionsF::renderVmSubLayout('stockhandle',array('product'=>$this->product));
+				<?php echo shopFunctionsF::renderVmSubLayout('stockhandle',array('product'=>$this->product));
 
 				// Ask a question about this product
 				if (VmConfig::get('ask_question', 0) == 1) {
@@ -201,7 +256,7 @@ if(vRequest::getInt('print',false)){ ?>
 				}
 				?>
 
-				</div>	
+	</div>	
 	
 <?php
 
@@ -209,8 +264,8 @@ if(vRequest::getInt('print',false)){ ?>
 	echo $this->product->event->beforeDisplayContent; ?>
 
 	<?php
-
-	echo shopFunctionsF::renderVmSubLayout('customfields',array('product'=>$this->product,'position'=>'normal'));
+	
+	/*echo shopFunctionsF::renderVmSubLayout('customfields',array('product'=>$this->product,'position'=>'normal'));*/
 
     // Product Packaging
     $product_packaging = '';
@@ -285,6 +340,4 @@ if ($this->product->prices['salesPrice'] > 0) {
 
 ?>
 </div>
-
-
 

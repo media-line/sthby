@@ -15,7 +15,7 @@
 defined ('_JEXEC') or die('Restricted access');
 
 if($viewData['orderable']) {
-	echo '<input type="submit" name="addtocart" class="addtocart-button" value="'.vmText::_( 'COM_VIRTUEMART_CART_ADD_TO' ).'" title="'.vmText::_( 'COM_VIRTUEMART_CART_ADD_TO' ).'" />';
+	echo '<input type="submit" name="addtocart" class="addtocart-button uk-button" value="'.JText::_("COM_VIRTUEMART_ADD_TO_CART").'" title="'.vmText::_( 'COM_VIRTUEMART_CART_ADD_TO' ).'" />';
 } else {
 	echo '<span name="addtocart" class="addtocart-button-disabled" title="'.vmText::_( 'COM_VIRTUEMART_ADDTOCART_CHOOSE_VARIANT' ).'" >'.vmText::_( 'COM_VIRTUEMART_ADDTOCART_CHOOSE_VARIANT' ).'</span>';
 }

@@ -71,7 +71,6 @@ $position = 'addtocart';
 
 if (!VmConfig::get('use_as_catalog', 0)  ) { ?>
 
-	<div class="addtocart-bar">
 	<?php
 	// Display the quantity box
 	$stockhandle = VmConfig::get ('stockhandle', 'none');
@@ -82,26 +81,40 @@ if (!VmConfig::get('use_as_catalog', 0)  ) { ?>
 		if (!( VmConfig::get('askprice', true) and empty($tmpPrice) ) ) { ?>
 			<?php if ($product->orderable) { ?>
 				<!-- <label for="quantity<?php echo $product->virtuemart_product_id; ?>" class="quantity_box"><?php echo vmText::_ ('COM_VIRTUEMART_CART_QUANTITY'); ?>: </label> -->
-				<span class="quantity-box">
+				<!--<span class="uk-quantity-block uk-inline-block uk-margin-large-right">
 				<input type="text" class="quantity-input js-recalculate" name="quantity[]"
 					data-errStr="<?php echo vmText::_ ('COM_VIRTUEMART_WRONG_AMOUNT_ADDED')?>"
 					value="<?php echo $init; ?>" init="<?php echo $init; ?>" step="<?php echo $step; ?>" <?php echo $maxOrder; ?> />
-			</span>
+				</span>
 				<span class="quantity-controls js-recalculate">
 				<input type="button" class="quantity-controls quantity-plus"/>
 				<input type="button" class="quantity-controls quantity-minus"/>
-			</span>
+				</span>-->
+			
+				<div class="uk-quantity-block uk-inline-block uk-margin-large-right">
+					<label class="uk-quantity-label" for="quantity"><?php echo JText::_('COM_VIRTUEMART_QTY'); ?></label>
+					<input type="text" name="quantity" id="quantity" onkeyup="reloadPrices();" class="uk-quantity-input" value="1">	
+					<!--<span class="quantity-controls js-recalculate">
+						<input type="button" class="quantity-controls quantity-plus"/>
+						<input type="button" class="quantity-controls quantity-minus"/>
+					</span>	-->					
+				</div>
+			
 			<?php }
 
 			if(!empty($addtoCartButton)){
-				?><span class="addtocart-button">
-				<?php echo $addtoCartButton ?>
-				</span> <?php
+				?>
+				
+				<div class="uk-inline-block">
+					<div class="buttons">
+						<?php echo $addtoCartButton ?>
+					</div>			
+				</div> <?php
 			} ?>
 			<input type="hidden" name="virtuemart_product_id[]" value="<?php echo $product->virtuemart_product_id ?>"/>
 			<noscript><input type="hidden" name="task" value="add"/></noscript> <?php
 		}
 	} ?>
 
-	</div><?php
+	<?php
 } ?>

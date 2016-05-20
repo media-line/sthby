@@ -1504,6 +1504,9 @@ html.presto .b-loader {
 	display: block;
     text-align: center;
 }
+.span.quantity-controls {
+	vertical-align: top !important;
+}
 /* ========================================================================
    Стили калькулятора (Calculator styles)
 ========================================================================== */
@@ -1901,9 +1904,33 @@ html.presto .b-loader {
 .uk-calc-slide-result .uk-h3 {
 	padding-bottom: 10px;
 }
+
+
+/* ========================================================================
+   Virtuemart 
+========================================================================== */
 .product-price {
 	float: none;
 	text-align: center;
+}
+.productdetails .vm-price-desc {
+	display: none;
+}
+.productdetails div.PricesalesPrice {
+	padding-top: 10px;
+	text-align: left;
+}
+.uk-child-products {
+	text-align: justify;
+	background-color: white;
+	height: 50px;
+	text-align: center;
+}
+.uk-child-fields table {
+	width: 100%;
+}
+.uk-child-fields table tr:nth-child(even) {
+	background-color: #eee;
 }
 /* ========================================================================
    Форма оформления заказа (Form order)
