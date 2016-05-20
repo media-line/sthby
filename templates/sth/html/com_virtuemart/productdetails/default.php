@@ -154,6 +154,7 @@ if(vRequest::getInt('print',false)){ ?>
 		<table>
 			<?php $productModel = VmModel::getModel ('product'); ?>
 			<?php $customFields = $this->product->customfieldsSorted['normal'];
+			$currency = $this->currency;
 			foreach ($customFields as $customField) {
 				if ($customField->virtuemart_custom_id == 4) {
 					$productsChildId = $customField->options; 
@@ -174,18 +175,20 @@ if(vRequest::getInt('print',false)){ ?>
 									<td></td>
 								</tr>
 							<?php } ?>
-							<tr class="uk-child-products">
-								<td><?php echo $productChild->product_name; ?></td>
-								<td><?php echo $productChild->prices['salesPrice']; ?></td>
-									
-								<?php foreach ($customFieldsChild as $customFieldChild) {
-									if ($customFieldChild->virtuemart_custom_id != 4) { ?>
-										<td><?php echo $customFieldChild->customfield_value; ?></td>
-									<?php }
-								} ?>
-									
-								<td><input type="radio" name="select_child" value="<?php echo $productChildId; ?>"><label></label></td>
-							</tr>
+							<?php if (count($customFieldsChild)) { ?>
+								<tr class="uk-child-products">
+									<td><?php echo $productChild->product_name; ?></td>
+									<td><?php echo $currency->createPriceDiv ('salesPrice', '', $productChild->prices['salesPrice']); ?></td>
+										
+									<?php foreach ($customFieldsChild as $customFieldChild) {
+										if ($customFieldChild->virtuemart_custom_id != 4) { ?>
+											<td><?php echo $customFieldChild->customfield_value; ?></td>
+										<?php }
+									} ?>
+										
+									<td><label class="select_child"><input type="radio" name="select_child" value="<?php echo $productChildId; ?>"></label></td>
+								</tr>
+							<?php } ?>
 						<?php $count++;
 						} 
 					} ?>
@@ -194,7 +197,7 @@ if(vRequest::getInt('print',false)){ ?>
 		</table>
 	</div>
 	
-	<div class="uk-grid">
+	<div class="uk-grid uk-price">
 
 				<?php
 				// TODO in Multi-Vendor not needed at the moment and just would lead to confusion
