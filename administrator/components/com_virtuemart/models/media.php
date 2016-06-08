@@ -170,6 +170,7 @@ class VirtueMartModelMedia extends VmModel {
 	*/
 
 	function getFiles($onlyPublished=false, $noLimit=false, $virtuemart_product_id=null, $cat_id=null, $where=array(),$nbr=false){
+
 		$this->_noLimit = $noLimit;
 
 		if(empty($db)) $db = JFactory::getDBO();
