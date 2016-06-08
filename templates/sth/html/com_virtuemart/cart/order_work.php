@@ -31,29 +31,12 @@ $Phone = $_POST['inputPhone'];
 $Email = $_POST['inputEmail'];
 $Comment = $_POST['inputComment'];
 
-/*отправка письма на почту клиента - на данный момент не работает*/
-function mailpay($FIO, $Phone, $Email, $wsb_invoice_item_name, $wsb_invoice_item_quantity, $wsb_total, $Comment){
-		$to      = "akravchenko@medialine.by";
-		$subject = "Письмо с заказом с сайта";
-
-		$message = "
-Фамилия, Имя, Отчество - $FIO <br/> 
-Телефон - $Phone <br/>
-Email - $Email <br/>
-Наименование товара - $wsb_invoice_item_name <br/>
-Количество товара - $wsb_invoice_item_quantity <br/>
-Общая стоимость - $wsb_total<br/>
-Комментарий - $Comment
-";
-		mail($to, $subject, $message);
-}
-
 /*проверка куда отправлять данные*/
-function selection($selectPay, $FIO, $Phone, $Email, $wsb_invoice_item_name, $wsb_invoice_item_quantity, $wsb_total, $Comment) {
+function selection($selectPay) {
 		if ($selectPay == 'WebPay') {
 				echo 'https://securesandbox.webpay.by';
 		} else {
-				mailpay($FIO, $Phone, $Email, $wsb_invoice_item_name, $wsb_invoice_item_quantity, $wsb_total, $Comment);
+				echo '/templates/sth/html/com_virtuemart/cart/send_mail.php';
 		}
 }
 ?>
@@ -72,10 +55,15 @@ function selection($selectPay, $FIO, $Phone, $Email, $wsb_invoice_item_name, $ws
 		<!-- <input type='hidden' name='wsb_return_url'  value='http://yoursite.com/compete'>
 		<input type='hidden' name='wsb_cancel_return_url'  value='http://yoursite.com/cancel'> -->
 		<input type='hidden' name='wsb_test' value='<?php echo $wsb_test ?>'>
-		<input type='hidden' name='wsb_invoice_item_name[0]'  value='<?php echo $wsb_invoice_item_name ?>'>
-		<input type='hidden' name='wsb_invoice_item_quantity[0]' value='<?php echo $wsb_invoice_item_quantity?>'>
-		<input type='hidden' name='wsb_invoice_item_price[0]'  value='<?php echo $wsb_invoice_item_price ?>'>
+		<input type='hidden' name='wsb_invoice_item_name'  value='<?php echo $wsb_invoice_item_name ?>'>
+		<input type='hidden' name='wsb_invoice_item_quantity' value='<?php echo $wsb_invoice_item_quantity?>'>
+		<input type='hidden' name='wsb_invoice_item_price'  value='<?php echo $wsb_invoice_item_price ?>'>
 		<input type='hidden' name='wsb_total' value='<?php echo $wsb_total ?>'>
+
+		<input type="hidden" name="inputFIO" value="<?php echo $FIO ?>">
+		<input type="hidden" name="inputPhone" value="<?php echo $Phone ?>">
+		<input type="hidden" name="inputEmail" value="<?php echo $Email ?>">
+		<input type="hidden" name="inputComment" value="<?php echo $Comment ?>">
 </form>
 
 <script>document.paydate.submit();</script>
