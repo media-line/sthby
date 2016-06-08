@@ -13,14 +13,7 @@ foreach ($this->cart->products as $pkey => $prow) {
 foreach ($this->cart->products as $pkey => $prow) {
 $wsb_invoice_item_price = $prow->allPrices[0]['product_price'];
 }
-
-$revers = $_SERVER['HTTP_REFERER'];
-if ($revers == 'http://sthby:8080/templates/sth/html/com_virtuemart/cart/order_work.php') {
-		echo 'ntcn';
-}
-
 ?>
-
 
 <h2 class="form-cart">Оформление заказа</h2>
 		<form id="cart-form" class="form-horizontal" role="form" method="post" action="/templates/sth/html/com_virtuemart/cart/order_work.php">
